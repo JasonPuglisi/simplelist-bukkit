@@ -1,0 +1,13 @@
+name: SimpleList
+main: me.ijason.SimpleList.SimpleList
+version: 1.0
+commands:
+    who:
+        description: Displays a list of online players.
+        usage: /<command>
+    list:
+        description: Displays a list of online players.
+        usage: /<command>
+    players:
+        description: Displays a list of online players.
+        usage: /<command>

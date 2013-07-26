@@ -1,0 +1,1 @@
+SimpleList is a plugin for CraftBukkit Minecraft servers that displays a list of online players.
