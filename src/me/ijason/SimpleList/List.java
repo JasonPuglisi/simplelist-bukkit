@@ -8,10 +8,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.ChatColor;
 
 /**
- * Useful part of SimpleList
- * 
  * @author Jason Puglisi
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 public class List implements CommandExecutor {
@@ -34,18 +32,29 @@ public class List implements CommandExecutor {
 				listedPlayers++;
 			}
 			if(sender instanceof Player) {
-				sender.sendMessage("§eOnline Players (" + playerCount + "): §f" + list.substring(0, list.length() - 2));
-				return true;
-			} else if(playerCount == 0) {
-				sender.sendMessage("There are no players online!");
+				if(playerCount != 1) {
+					sender.sendMessage("§eOnline Players (" + playerCount + "): §f" + list.substring(0, list.length() - 2));
+					return true;
+				} else {
+					sender.sendMessage("§eYou are the only player online!");
+					return true;
+				}
+			} else if(playerCount != 0) {
+				sender.sendMessage("Online Players (" + playerCount + "): " + ChatColor.stripColor(list.substring(0, list.length() - 2)));
 				return true;
 			} else {
-				sender.sendMessage("Online Players (" + playerCount + "): " + ChatColor.stripColor(list.substring(0, list.length() - 2)));
+				sender.sendMessage("There are no players online!");
 				return true;
 			}
 		} else {
-			sender.sendMessage("Too many arguments!");
-			return false;
+			if(sender instanceof Player) {
+				sender.sendMessage("§eToo many arguments!");
+				return true;
+			} else {
+				sender.sendMessage("Too many arguments!");
+				return true;
+			}
 		}
 	}
 }
+
