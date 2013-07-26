@@ -1,6 +1,6 @@
 name: SimpleList
 main: me.ijason.SimpleList.SimpleList
-version: 1.0
+version: 1.0.0
 commands:
     who:
         description: Displays a list of online players.
