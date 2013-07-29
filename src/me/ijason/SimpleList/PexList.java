@@ -7,16 +7,19 @@ import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 import org.bukkit.ChatColor;
 
+import ru.tehkode.permissions.PermissionUser;
+import ru.tehkode.permissions.bukkit.PermissionsEx;
+
 /**
  * @author Jason Puglisi
  * @version 1.1.0
  */
 
-public class List implements CommandExecutor {
+public class PexList implements CommandExecutor {
 
 	private SimpleList plugin;
 	
-	public List(SimpleList plugin) {
+	public PexList(SimpleList plugin) {
 		
 		this.plugin = plugin;
 		
@@ -38,7 +41,12 @@ public class List implements CommandExecutor {
 			while(listedPlayers < (totalPlayers)) {
 				
 				currentPlayer = playerArray[listedPlayers].getDisplayName();
-				playerList = playerList + currentPlayer + "§f, ";
+				
+				PermissionUser user = PermissionsEx.getUser(playerArray[listedPlayers]);
+				String prefix = ChatColor.translateAlternateColorCodes('&', user.getPrefix());
+				String suffix = ChatColor.translateAlternateColorCodes('&', user.getSuffix());
+				
+				playerList = playerList + prefix + currentPlayer + suffix + "§f, ";
 				listedPlayers++;
 				
 			}
@@ -54,7 +62,7 @@ public class List implements CommandExecutor {
 				}
 				
 				else { // There is only one player online. Send notification.
-					
+				
 					sender.sendMessage("§eYou are the only player online!");
 					
 					return true;
