@@ -1,6 +1,6 @@
 name: SimpleList
 main: me.ijason.SimpleList.SimpleList
-version: 1.0.1
+version: 1.1.0
 author: iJason_
 commands:
     who:
