@@ -42,7 +42,7 @@ public class List implements CommandExecutor {
 			return true;
 		}
 		// Send list
-		sender.sendMessage(ChatColor.YELLOW + "Online Players(" + players.length + "): " + ChatColor.WHITE + list.substring(0, list.length() - 2));
+		sender.sendMessage(ChatColor.YELLOW + "Online Players (" + players.length + "): " + ChatColor.WHITE + list.substring(0, list.length() - 2));
 		return true;
 	}
 	// Getter and setter
