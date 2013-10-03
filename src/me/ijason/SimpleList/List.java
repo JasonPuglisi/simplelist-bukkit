@@ -1,107 +1,55 @@
 package me.ijason.SimpleList;
 
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.Bukkit;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.Command;
-import org.bukkit.entity.Player;
 import org.bukkit.ChatColor;
-
-/**
- * @author Jason Puglisi
- * @version 1.1.0
- */
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 public class List implements CommandExecutor {
-
 	private SimpleList plugin;
-	
 	public List(SimpleList plugin) {
-		
-		this.plugin = plugin;
-		
+		this.setPlugin(plugin);
 	}
-	
-	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		
-		if(args.length == 0) { // If there are no arguments, build player list
-			
-			Player[] playerArray = Bukkit.getOnlinePlayers();
-			
-			int totalPlayers = playerArray.length;
-			int listedPlayers = 0;
-			
-			String currentPlayer = "";
-			String playerList = "";
-			
-			while(listedPlayers < (totalPlayers)) {
-				
-				currentPlayer = playerArray[listedPlayers].getDisplayName();
-				playerList = playerList + currentPlayer + "§f, ";
-				listedPlayers++;
-				
-			}
-			
-			if(sender instanceof Player) { // If the user is a player, continue checks.
-				
-				if(totalPlayers != 1) { // If there is more than one player online, send player list.
-					
-					sender.sendMessage("§eOnline Players (" + totalPlayers + "): §f" + playerList.substring(0, playerList.length() - 2));
-					
-					return true;
-					
-				}
-				
-				else { // There is only one player online. Send notification.
-					
-					sender.sendMessage("§eYou are the only player online!");
-					
-					return true;
-					
-				}
-				
-			}
-			
-			else if(totalPlayers != 0) { // The user is a console. If there is a player online, send uncolored player list.
-				
-				sender.sendMessage("Online Players (" + totalPlayers + "): " + ChatColor.stripColor(playerList.substring(0, playerList.length() - 2)));
-				
-				return true;
-				
-			}
-			
-			else { // There are no players online. Send uncolored notification.
-				
-				sender.sendMessage("There are no players online!");
-				
-				return true;
-				
-			}
-			
+		// Too many arguments
+		if (args.length != 0) {
+			sender.sendMessage(ChatColor.YELLOW + "Too many arguments.");
+			return true;
 		}
-		
-		else { // There is at least one argument. Continue checks.
-			
-			if(sender instanceof Player) { // If the user is a player, send notification.
-				
-				sender.sendMessage("§eToo many arguments!");
-				
-				return true;
-				
+		// Make list
+		Player[] players = Bukkit.getOnlinePlayers();
+		String list = "";
+		String pexPrefix = "";
+		String pexSuffix = "";
+		String scPrefix = "";
+		String scSuffix = "";
+		for(int i = 0; i < players.length; i++) {
+			if (SimpleList.pexEnabled()) {
+				pexPrefix = PexInfo.getPrefix(players[i]);
+				pexSuffix = PexInfo.getSuffix(players[i]);
 			}
-			
-			else { // The user is a console. Send uncolored notification.
-				
-				sender.sendMessage("Too many arguments!");
-				
-				return true;
-				
+			if (SimpleList.scEnabled()) {
+				scPrefix = ScInfo.getPrefix();
+				scSuffix = ScInfo.getSuffix();
 			}
-			
+			list += scPrefix + pexPrefix + players[i].getDisplayName() + pexSuffix + scSuffix + ChatColor.WHITE + ", ";
 		}
-		
+		// No players online
+		if (players.length == 0) {
+			sender.sendMessage(ChatColor.YELLOW + "No players online.");
+			return true;
+		}
+		// Send list
+		sender.sendMessage(ChatColor.YELLOW + "Online Players(" + players.length + "): " + ChatColor.WHITE + list.substring(0, list.length() - 2));
+		return true;
 	}
-	
+	// Getter and setter
+	public SimpleList getPlugin() {
+		return plugin;
+	}
+	public void setPlugin(SimpleList plugin) {
+		this.plugin = plugin;
+	}
 }
-
