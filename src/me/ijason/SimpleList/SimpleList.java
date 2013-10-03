@@ -2,43 +2,32 @@ package me.ijason.SimpleList;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-/**
- * @author Jason Puglisi
- * @version 1.1.0
+/**@author Jason Puglisi
+ * @version 1.2.0
  */
 
 public class SimpleList extends JavaPlugin {
-
-	@Override
+	public static boolean pex = false;
+	public static boolean sc = false;
+	// Plugin enable
 	public void onEnable() {
-		
-		getLogger().info("Version " + getDescription().getVersion() + " loaded");
-		
-		if(getServer().getPluginManager().getPlugin("PermissionsEx") != null) { // If PermissionsEx is enabled, use prefix version and send notification.
-			
-			getCommand("who").setExecutor(new PexList(this));
-			getCommand("list").setExecutor(new PexList(this));
-			getCommand("players").setExecutor(new PexList(this));
-			
-			getLogger().info("PermissionsEx support enabled");
-			
-		}
-		
-		else { // PermissionsEx is not enabled. Use standard version.
-			
-			getCommand("who").setExecutor(new List(this));
-			getCommand("list").setExecutor(new List(this));
-			getCommand("players").setExecutor(new List(this));
-			
-		}
-		
+		getLogger().info("v" + getDescription().getVersion() + " enabled");
+		getCommand("who").setExecutor(new List(this));
+		getCommand("list").setExecutor(new List(this));
+		getCommand("players").setExecutor(new List(this));
+		pex = getServer().getPluginManager().getPlugin("PermissionsEx") != null;
+		sc = getServer().getPluginManager().getPlugin("SupaChat") != null;
 	}
-	
-	@Override
+	// Plugin disable
 	public void onDisable() {
-		
-		getLogger().info("Version " + getDescription().getVersion() + " unloaded");
-		
+		getLogger().info("v" + getDescription().getVersion() + " disabled");
 	}
-	
+	// PermissionsEx Enabled
+	public static boolean pexEnabled() {
+		return pex;
+	}
+	// SupaChat Enabled
+	public static boolean scEnabled() {
+		return sc;
+	}
 }
