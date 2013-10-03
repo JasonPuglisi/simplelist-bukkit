@@ -1,7 +1,7 @@
 name: SimpleList
 main: me.ijason.SimpleList.SimpleList
-version: 1.1.0
-author: iJason_
+version: 1.2.0
+author: Jason Puglisi
 commands:
     who:
         description: Displays a list of online players.
