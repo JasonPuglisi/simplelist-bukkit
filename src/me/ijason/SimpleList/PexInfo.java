@@ -9,7 +9,4 @@ public class PexInfo {
 	public static String getPrefix(Player player) {
 		return ChatColor.translateAlternateColorCodes('&', PermissionsEx.getUser(player).getPrefix());
 	}
-	public static String getSuffix(Player player) {
-		return ChatColor.translateAlternateColorCodes('&', PermissionsEx.getUser(player).getSuffix());
-	}
 }
