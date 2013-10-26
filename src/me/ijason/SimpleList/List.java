@@ -21,20 +21,25 @@ public class List implements CommandExecutor {
 		// Make list
 		Player[] players = Bukkit.getOnlinePlayers();
 		String list = "";
+		int playerCount = 0;
 		String pexPrefix = "";
-		String pexSuffix = "";
 		String scPrefix = "";
-		String scSuffix = "";
 		for(int i = 0; i < players.length; i++) {
 			if (SimpleList.pexEnabled()) {
 				pexPrefix = PexInfo.getPrefix(players[i]);
-				pexSuffix = PexInfo.getSuffix(players[i]);
 			}
 			if (SimpleList.scEnabled()) {
-				scPrefix = ScInfo.getPrefix();
-				scSuffix = ScInfo.getSuffix();
+				scPrefix = ScInfo.getPrefix(players[i]);
 			}
-			list += scPrefix + pexPrefix + players[i].getDisplayName() + pexSuffix + scSuffix + ChatColor.WHITE + ", ";
+			if (sender instanceof Player) {
+				if (((Player)sender).canSee(players[i])) {
+					list += scPrefix + pexPrefix + players[i].getDisplayName() + ChatColor.WHITE + ", ";
+					playerCount++;
+				}
+			} else {
+				list += scPrefix + pexPrefix + players[i].getDisplayName() + ChatColor.WHITE + ", ";
+				playerCount ++;
+			}
 		}
 		// No players online
 		if (players.length == 0) {
@@ -42,7 +47,7 @@ public class List implements CommandExecutor {
 			return true;
 		}
 		// Send list
-		sender.sendMessage(ChatColor.YELLOW + "Online Players (" + players.length + "): " + ChatColor.WHITE + list.substring(0, list.length() - 2));
+		sender.sendMessage(ChatColor.YELLOW + "Online Players (" + playerCount + "): " + ChatColor.WHITE + list.substring(0, list.length() - 2));
 		return true;
 	}
 	// Getter and setter
