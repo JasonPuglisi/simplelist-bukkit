@@ -5,13 +5,12 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**@author Jason Puglisi
- * @version 1.2.2
+ * @version 1.2.3
  */
 
 public class SimpleList extends JavaPlugin {
 	public static Plugin pex;
 	public static Plugin sc;
-	public static Plugin vnp;
 	// Plugin enable
 	public void onEnable() {
 		PluginManager pm = getServer().getPluginManager();

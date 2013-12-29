@@ -25,12 +25,8 @@ public class List implements CommandExecutor {
 		String pexPrefix = "";
 		String scPrefix = "";
 		for(int i = 0; i < players.length; i++) {
-			if (SimpleList.pexEnabled()) {
-				pexPrefix = PexInfo.getPrefix(players[i]);
-			}
-			if (SimpleList.scEnabled()) {
-				scPrefix = ScInfo.getPrefix(players[i]);
-			}
+			if (SimpleList.pexEnabled()) pexPrefix = PexInfo.getPrefix(players[i]);
+			if (SimpleList.scEnabled()) scPrefix = ScInfo.getPrefix(players[i]);
 			if (sender instanceof Player) {
 				if (((Player)sender).canSee(players[i])) {
 					list += scPrefix + pexPrefix + players[i].getDisplayName() + ChatColor.WHITE + ", ";

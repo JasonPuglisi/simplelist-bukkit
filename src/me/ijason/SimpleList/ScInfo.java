@@ -11,7 +11,12 @@ public class ScInfo extends JavaPlugin {
 	static Plugin supachatplugin = SimpleList.sc;
 	public static String getPrefix(Player player) {
 		String prefix = ((SupaChat) supachatplugin).info.getKey(player, "prefix");
-		if (prefix != null) return ChatColor.translateAlternateColorCodes('&', prefix);
-		return "";
+		String color = "";
+		if (prefix != null) {
+			for (int i = 0; i < prefix.length() - 1; i++) {
+				if (prefix.charAt(i) == '&') color = ChatColor.translateAlternateColorCodes('&', prefix.substring(i , i + 2));
+			}
+		}
+		return color;
 	}
 }

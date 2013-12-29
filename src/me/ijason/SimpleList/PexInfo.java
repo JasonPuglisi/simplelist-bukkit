@@ -7,6 +7,11 @@ import ru.tehkode.permissions.bukkit.PermissionsEx;
 
 public class PexInfo {
 	public static String getPrefix(Player player) {
-		return ChatColor.translateAlternateColorCodes('&', PermissionsEx.getUser(player).getPrefix());
+		String prefix = PermissionsEx.getUser(player).getPrefix();
+		String color = "";
+		for (int i = 0; i < prefix.length() - 1; i++) {
+			if (prefix.charAt(i) == '&') color = ChatColor.translateAlternateColorCodes('&', prefix.substring(i , i + 2));
+		}
+		return color;
 	}
 }
