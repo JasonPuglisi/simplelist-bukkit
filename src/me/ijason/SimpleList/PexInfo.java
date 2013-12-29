@@ -1,4 +1,4 @@
-package me.ijason.SimpleList;
+package me.ijason.simplelist;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;

@@ -1,4 +1,4 @@
-package me.ijason.SimpleList;
+package me.ijason.simplelist;
 
 import me.javoris767.supachat.SupaChat;
 
