@@ -1,3 +1,3 @@
-SimpleList is a plugin that displays a list of online players, with nickname and color support.
+SimpleList is the best player list plugin around! With nickname and text color support, it aims to replace the default player list, and others. SimpleList isn't packaged with unnecessary or unwanted extras, and there are no configurations or permissions to worry about. You can view the player list either in-game or in-console, and vanished players will even be hidden on the list from those who cannot see them.
 
-[BukkitDev](http://dev.bukkit.org/bukkit-plugins/simplelist/) :: [License](http://dev.bukkit.org/licenses/4-mit-license/)
+[BukkitDev](http://dev.bukkit.org/bukkit-plugins/simplelist/) • [License](http://dev.bukkit.org/licenses/4-mit-license/)
