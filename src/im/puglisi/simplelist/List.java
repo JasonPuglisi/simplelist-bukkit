@@ -1,4 +1,4 @@
-package me.ijason.simplelist;
+package im.puglisi.simplelist;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

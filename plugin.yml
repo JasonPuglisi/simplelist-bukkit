@@ -1,14 +1,17 @@
 name: SimpleList
-main: me.ijason.SimpleList.SimpleList
-version: 1.2.3
+main: im.puglisi.simplelist.SimpleList
+version: 1.3.0
 author: Jason Puglisi
 commands:
     who:
-        description: Displays a list of online players.
+        description: Displays a list of online players
         usage: /<command>
     list:
-        description: Displays a list of online players.
+        description: Displays a list of online players
         usage: /<command>
     players:
-        description: Displays a list of online players.
+        description: Displays a list of online players
+        usage: /<command>
+    online:
+        description: Displays a list of online players
         usage: /<command>

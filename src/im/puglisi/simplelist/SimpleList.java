@@ -1,11 +1,11 @@
-package me.ijason.simplelist;
+package im.puglisi.simplelist;
 
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**@author Jason Puglisi
- * @version 1.2.3
+ * @version 1.3.0
  */
 
 public class SimpleList extends JavaPlugin {
@@ -18,6 +18,7 @@ public class SimpleList extends JavaPlugin {
 		getCommand("who").setExecutor(new List(this));
 		getCommand("list").setExecutor(new List(this));
 		getCommand("players").setExecutor(new List(this));
+		getCommand("online").setExecutor(new List(this));
 		pex = pm.getPlugin("PermissionsEx");
 		sc = pm.getPlugin("SupaChat");
 	}

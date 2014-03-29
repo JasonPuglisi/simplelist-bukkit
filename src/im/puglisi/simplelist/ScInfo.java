@@ -1,4 +1,4 @@
-package me.ijason.simplelist;
+package im.puglisi.simplelist;
 
 import me.javoris767.supachat.SupaChat;
 
