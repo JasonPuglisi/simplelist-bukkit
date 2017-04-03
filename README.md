@@ -1,3 +1,18 @@
-SimpleList is the best player list plugin around! With nickname and text color support, it aims to replace the default player list, and others. SimpleList isn't packaged with unnecessary or unwanted extras, and there are no configurations or permissions to worry about. You can view the player list either in-game or in-console, and vanished players will even be hidden on the list from those who cannot see them.
+# SimpleList
 
-[BukkitDev](http://dev.bukkit.org/bukkit-plugins/simplelist/) • [License](http://dev.bukkit.org/licenses/4-mit-license/)
+Simple player list plugin for Bukkit Minecraft servers with nickname and color
+support.
+
+## Usage
+
+This plugin is no longer in development, and may not work with modern Minecraft
+servers. There are no planned updates, so use at your own risk. It is still
+completely stable for older versions of the Bukkit server.
+
+## Overview
+
+Aims to replace the default player list along with others. There are no
+settings or permissions to configure.
+
+Supports nicknames and colored text, which is commonly used in name prefixes.
+Automatically hides vanished players, and can be used in-game or in-console.
